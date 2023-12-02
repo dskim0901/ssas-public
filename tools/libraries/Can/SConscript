@@ -24,7 +24,7 @@ class LibraryCanLib(Library):
         if not os.path.isfile(dll):
             shutil.copy('%s/%s/PCANBasic.dll' %
                         (peakcan, v0), dll)
-        self.LIBS += ['PCANBasic']
+        self.LIBS += ['PCANBasic', 'uuid']
         self.LIBPATH += [BUILD_DIR]
 
     def config_vxl(self):
@@ -44,7 +44,7 @@ class LibraryCanLib(Library):
             self.LIBS += ['dl']
             self.CPPDEFINES += ['USE_ZLG_DLL']
         else:
-            self.LIBS += ['ControlCAN']
+            self.LIBS += ['ControlCAN', 'uuid']
             self.LIBPATH += [BUILD_DIR]
             shutil.copy('%s/ControlCAN.lib' %
                         (ControlCAN), '%s/libControlCAN.a' % (BUILD_DIR))
@@ -54,11 +54,11 @@ class LibraryCanLib(Library):
         self.CPPPATH = ['$INFRAS']
         self.CPPDEFINES = []
         self.LIBPATH = []
-        self.LIBS = ['TcpIp', 'StdTimer', 'Utils']
+        self.LIBS = ['TcpIp', 'StdTimer', 'Utils', 'uuid']
         self.CPPFLAGS = []
         self.source = objs
         if IsBuildForWindows():
-            self.LIBS += ['wsock32', 'Ole32']
+            self.LIBS += ['wsock32', 'Ole32', 'uuid']
             self.config_peakcan()
             self.config_vxl()
             self.config_zlg()
@@ -72,7 +72,7 @@ class ApplicationCanSimulator(Application):
     def config(self):
         self.CPPPATH = ['$INFRAS']
         if IsBuildForWindows():
-            self.LIBS = ['TcpIp', 'StdTimer', 'wsock32', 'winmm']
+            self.LIBS = ['TcpIp', 'StdTimer', 'wsock32', 'winmm', 'uuid']
         self.source = objsCanSim
 
 
@@ -82,7 +82,7 @@ objsCanDump = Glob('utils/can_dump.c')
 @register_application
 class ApplicationCanDump(Application):
     def config(self):
-        self.LIBS = ['CanLib']
+        self.LIBS = ['CanLib', 'uuid']
         self.CPPPATH = ['$INFRAS']
         self.source = objsCanDump
 
@@ -93,7 +93,7 @@ objsCanSend = Glob('utils/can_send.c')
 @register_application
 class ApplicationCanSend(Application):
     def config(self):
-        self.LIBS = ['CanLib']
+        self.LIBS = ['CanLib', 'uuid']
         self.CPPPATH = ['$INFRAS']
         self.source = objsCanSend
 
@@ -104,6 +104,6 @@ objsCanBr = Glob('utils/can_bridge.c')
 @register_application
 class ApplicationCanBridge(Application):
     def config(self):
-        self.LIBS = ['CanLib']
+        self.LIBS = ['CanLib', 'uuid']
         self.CPPPATH = ['$INFRAS']
         self.source = objsCanBr
