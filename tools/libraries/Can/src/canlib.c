@@ -493,6 +493,7 @@ int can_open(const char *device_name, uint32_t port, uint32_t baudrate) {
 bool can_write(int busid, uint32_t canid, uint8_t dlc, const uint8_t *data) {
   bool rv = false;
   struct Can_Bus_s *b = getBus(busid);
+  printf("device_name=%s\n", b->device.device_name);
   if (NULL == b) {
     ASLOG(ERROR, ("can bus(%d) is not on-line 'can_write'\n", (int)busid));
   } else if (dlc > 64) {

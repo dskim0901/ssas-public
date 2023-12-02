@@ -95,6 +95,7 @@ Std_ReturnType CanIf_Transmit(PduIdType TxPduId, const PduInfoType *PduInfoPtr) 
   canPdu.length = PduInfoPtr->SduLength;
   canPdu.sdu = PduInfoPtr->SduDataPtr;
   canPdu.id = 0x400 + OsekNm_ChannelConfigs[0].NodeId;
+  printf("transmit %02x %02x\n", canPdu.sdu[0],canPdu.sdu[1]);
   return Can_Write(0, &canPdu);
 }
 #endif

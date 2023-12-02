@@ -14,7 +14,7 @@
 
 #define CAN_MAX_DLEN 64 /* 64 for CANFD */
 #define CAN_MTU sizeof(struct can_frame)
-#define CAN_PORT_MIN 8000
+#define CAN_PORT_MIN 80
 
 #define mCANID(frame)                                                                              \
   (((uint32_t)frame.data[CAN_MAX_DLEN + 0] << 24) +                                                \

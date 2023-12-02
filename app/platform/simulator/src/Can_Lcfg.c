@@ -13,22 +13,22 @@
 /* ================================ [ FUNCTIONS ] ============================================== */
 Can_ChannelConfigType Can_ChannelConfigs[32] = {
   {
-    "simulator_v2",
+    "simulator",
     0,
     500000,
   },
   {
-    "simulator_v2",
+    "simulator",
     1,
     500000,
   },
   {
-    "simulator_v2",
+    "simulator",
     2,
     500000,
   },
   {
-    "simulator_v2",
+    "simulator",
     3,
     500000,
   },

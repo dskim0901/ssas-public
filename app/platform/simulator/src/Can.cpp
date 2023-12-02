@@ -153,6 +153,7 @@ Std_ReturnType Can_SetControllerMode(uint8_t Controller, Can_ControllerStateType
 #ifdef USE_CAN_FILE_LOG
   static char path[128];
 #endif
+  printf("Can_SetControllerMode: %d %d\n", Controller, Transition);
   EnterCritical();
   if (Controller < CAN_CONFIG->numOfChannels) {
     config = &CAN_CONFIG->channelConfigs[Controller];

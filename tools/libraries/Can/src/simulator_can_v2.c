@@ -20,7 +20,7 @@
 #define CAN_MTU sizeof(struct can_frame)
 
 #define CAN_CAST_IP TCPIP_IPV4_ADDR(224, 244, 224, 245)
-#define CAN_PORT_MIN 8000
+#define CAN_PORT_MIN 80
 
 #define CAN_FRAME_TYPE_RAW 0
 #define CAN_FRAME_TYPE_MTU 1
@@ -178,6 +178,7 @@ static bool socket_probe(int busid, uint32_t port, uint32_t baudrate,
       ret = TcpIp_Bind(sockRd, TCPIP_LOCALADDRID_ANY, &Port);
       if (E_OK == ret) {
         TcpIp_SetupAddrFrom(&ipv4Addr, CAN_CAST_IP, Port);
+        printf("id=%08x port=%d\n",CAN_CAST_IP, Port);
         ret = TcpIp_AddToMulticast(sockRd, &ipv4Addr);
       }
       if (E_OK != ret) {

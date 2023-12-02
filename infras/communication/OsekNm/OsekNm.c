@@ -392,6 +392,7 @@ void OsekNm_Init(const OsekNm_ConfigType *ConfigPtr) {
     memset(context, 0, sizeof(*context));
     context->nmState = NM_stOff;
     context->nmTxPdu.Source = config->NodeId;
+    printf("OsekNm_Init: %d\n", config->NodeId);
   }
 }
 
@@ -612,6 +613,7 @@ StatusType D_WindowDataReq(NetIdType NetId, NMPduType *nmPdu, uint8_t DataLength
   PduInfo.SduLength = DataLengthTx;
   PduInfo.SduDataPtr = &nmPdu->Destination;
 
+  printf("transmit %02x %02x\n", PduInfo.SduDataPtr[0], PduInfo.SduDataPtr[1]);
   ercd = CanIf_Transmit(config->txPduId, &PduInfo);
 
   return ercd;
