@@ -73,6 +73,8 @@ class ApplicationCanSimulator(Application):
         self.CPPPATH = ['$INFRAS']
         if IsBuildForWindows():
             self.LIBS = ['TcpIp', 'StdTimer', 'wsock32', 'winmm', 'uuid']
+        else:
+            self.LIBS = ['TcpIp', 'uuid','StdTimer','Utils']
         self.source = objsCanSim
 
 
