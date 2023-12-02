@@ -953,6 +953,7 @@ def __CompilerGCC(**kwargs):
     env = Environment(TOOLS=['ar', 'as', 'gcc', 'g++', 'gnulink'])
     env.Append(CFLAGS=['-std=gnu99'])
     env.Append(CPPFLAGS=['-Wall'])
+    env.Append(CPPFLAGS=['-pipe'])
     if not GetOption('strip'):
         env.Append(CPPFLAGS=['-g'])
     if IsBuildForWindows():
