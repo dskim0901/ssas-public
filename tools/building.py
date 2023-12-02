@@ -356,7 +356,7 @@ def Package(url, ** parameters):
         flag = '%s/.unrar.done' % (pkg)
         if (not os.path.exists(flag)):
             try:
-                RunCommand('cd %s && alzipcon -x ../%s' % (pkg, pkgBaseName))
+                RunCommand('alzipcon -x %s' % (pkgBaseName))
             except Exception as e:
                 print('WARNING:', e)
             MKFile(flag, 'url')
