@@ -72,7 +72,7 @@ class ApplicationCanSimulator(Application):
     def config(self):
         self.CPPPATH = ['$INFRAS']
         if IsBuildForWindows():
-            self.LIBS = ['TcpIp', 'StdTimer', 'wsock32', 'winmm', 'uuid']
+            self.LIBS = ['TcpIp', 'StdTimer', 'wsock32', 'winmm', 'uuid','Utils']
         else:
             self.LIBS = ['TcpIp', 'uuid','StdTimer','Utils']
         self.source = objsCanSim
