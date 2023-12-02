@@ -47,7 +47,6 @@ static void *can_server_main(void *args) {
   param.TxCanId = isotp->params.U.CAN.TxCanId;
   param.ll_dl = (uint8_t)isotp->params.ll_dl;
 
-  printf("[%d] open %s:%d\n", Channel, param.device, param.port);
   CanTp_ReConfig(Channel, &param);
   CanTp_InitChannel(Channel);
   ret = Can_SetControllerMode(Channel, CAN_CS_STARTED);
